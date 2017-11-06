@@ -27,7 +27,8 @@ def file2matrix(fileName):
     numberOfLines = len(arrayOLines)
     returnMat = zeros((numberOfLines, 3))
     classLabelVector = []
-    for line in arrayOLines
+    index = 0
+    for line in arrayOLines:
         line = line.strip()
         listFromLine = line.split('\t')
         returnMat[index, :]= listFromLine[0:3]
@@ -35,3 +36,19 @@ def file2matrix(fileName):
         index += 1
     return returnMat, classLabelVector
 
+def autoNorm(dataSet):
+    minVals = dataSet.min(0)
+    maxVals = dataSet.max(0)
+    ranges = maxVals - minVals
+    normDataSet = zeros(shape(dataSet))
+    m = dataSet.shape[0]
+    normDataSet = dataSet - tile(minVals, (m, 1))
+    normDataSet = normDataSet / tile(ranges, (m, 1))
+    return normDataSet, ranges, minVals
+
+def datingClassTest():
+    hoRatio = 0.10
+    datingDataMat, datingLabels = flie2matrix('datingTestSet.txt')
+    normMat, ranges, minVals = autoNorm(datingDataMat)
+    m = normMat.shape[0]
+    
