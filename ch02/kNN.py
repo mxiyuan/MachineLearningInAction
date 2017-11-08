@@ -75,3 +75,13 @@ def classifyPerson():
     print("You will propbably like this person: ", \
         resultList[classifierResult - 1])
     
+def img2vector(fileName):
+    returnVect = zeros((1, 1024))
+    fr = open(fileName)
+    for i in range(32):
+        lineStr = fr.readline()
+        for j in range(32):
+            returnVect[0, 32 * i + j] = int(lineStr[j])
+    return returnVect
+
+def 
