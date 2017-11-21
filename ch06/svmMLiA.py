@@ -1,4 +1,4 @@
-def loadDataSet():
+def loadDataSet(fileName):
     dataMat = []
     labelMat = []
     fr = open(fileName)
