@@ -21,6 +21,6 @@ def standRegres(xArr, yArr):
     if linalg.det(xTx) == 0.0:
         print("This matrix is singular, cannot do inverse")
         return
-    ws = xTx.T * (xMat.T * yMat)
+    ws = xTx.I * (xMat.T * yMat)
     return ws
 
