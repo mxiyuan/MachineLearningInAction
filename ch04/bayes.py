@@ -90,4 +90,5 @@ def spamTest():
         fullText.extend(wordList)
         classList.append(1)
         wordList = textParse(open('email/ham/%d.txt' % i).read())
+        docList.append(wordList)
         
